@@ -9,6 +9,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
+/*
+ Нужно бы поработать над архитектурой и чистотой кода, но на это не хватило времени.
+ */
 class ViewController: UIViewController {
 
     //MARK: - Properties

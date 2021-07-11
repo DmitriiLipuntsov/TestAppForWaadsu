@@ -7,6 +7,10 @@
 
 import MapKit
 
+/*
+ Можно было просто доставать координаты из даты и из них устанавливать точки. Проще было бы посчитать пройденное расстояние.
+ */
+
 class WaadsuAPI {
     
     func getOverlays(complition: @escaping ([MKOverlay]) -> ()) {

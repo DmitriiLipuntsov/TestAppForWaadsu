@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 
+// думаю можно было сделать лучше, но не хватило времени т.к. до этого не работал с MapKit.
 struct Model: Decodable {
     
     let multiPolygon: MKMultiPolygon
