@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77058232269A1B0400323EE2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77058231269A1B0400323EE2 /* Model.swift */; };
 		77BBF7DB2698AD0F00D61C23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */; };
 		77BBF7DD2698AD0F00D61C23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */; };
 		77BBF7DF2698AD0F00D61C23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DE2698AD0F00D61C23 /* ViewController.swift */; };
 		77BBF7E42698AD1000D61C23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77BBF7E32698AD1000D61C23 /* Assets.xcassets */; };
 		77BBF7E72698AD1000D61C23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77BBF7E52698AD1000D61C23 /* LaunchScreen.storyboard */; };
 		77BBF7EF2698AE9E00D61C23 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 77BBF7EE2698AE9E00D61C23 /* .gitignore */; };
+		77BBF7F12698B18300D61C23 /* WaadsuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7F02698B18300D61C23 /* WaadsuAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77058231269A1B0400323EE2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		77BBF7D72698AD0F00D61C23 /* TestAppForWaadsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppForWaadsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		77BBF7E62698AD1000D61C23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77BBF7E82698AD1000D61C23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77BBF7EE2698AE9E00D61C23 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		77BBF7F02698B18300D61C23 /* WaadsuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaadsuAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */,
 				77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */,
 				77BBF7DE2698AD0F00D61C23 /* ViewController.swift */,
+				77BBF7F02698B18300D61C23 /* WaadsuAPI.swift */,
+				77058231269A1B0400323EE2 /* Model.swift */,
 				77BBF7E32698AD1000D61C23 /* Assets.xcassets */,
 				77BBF7E52698AD1000D61C23 /* LaunchScreen.storyboard */,
 				77BBF7E82698AD1000D61C23 /* Info.plist */,
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77BBF7DF2698AD0F00D61C23 /* ViewController.swift in Sources */,
+				77058232269A1B0400323EE2 /* Model.swift in Sources */,
+				77BBF7F12698B18300D61C23 /* WaadsuAPI.swift in Sources */,
 				77BBF7DB2698AD0F00D61C23 /* AppDelegate.swift in Sources */,
 				77BBF7DD2698AD0F00D61C23 /* SceneDelegate.swift in Sources */,
 			);
