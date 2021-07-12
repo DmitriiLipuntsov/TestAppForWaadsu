@@ -11,6 +11,7 @@ import MapKit
 // думаю можно было сделать лучше, но не хватило времени т.к. до этого не работал с MapKit.
 struct Model: Decodable {
     
+    let coordinates: [CLLocationCoordinate2D]
     let multiPolygon: MKMultiPolygon
     let type: String
     let features: [Feature]
@@ -23,22 +24,27 @@ struct Model: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(String.self, forKey: .type)
         features = try container.decode([Feature].self, forKey: .features)
-        var coordinates: [MKPolygon] = []
+        
+        var polygons: [MKPolygon] = []
+        var coordinates: [CLLocationCoordinate2D] = []
+        
         features[0].geometry.coordinates.forEach({ multipolygon in
             var locationCoordinates: [CLLocationCoordinate2D] = []
             multipolygon.forEach { polygon in
-                polygon.forEach { coordinates in
-                    let lc = CLLocationCoordinate2D(latitude: coordinates[1], longitude: coordinates[0])
+                polygon.forEach { point in
+                    let lc = CLLocationCoordinate2D(latitude: point[1], longitude: point[0])
                     if CLLocationCoordinate2DIsValid(lc) {
                         locationCoordinates.append(lc)
+                        coordinates.append(lc)
                     }
                 }
             }
             let polygon = MKPolygon(coordinates: locationCoordinates, count: locationCoordinates.count)
-            coordinates.append(polygon)
+            polygons.append(polygon)
         })
         
-        self.multiPolygon = MKMultiPolygon(coordinates)
+        self.coordinates = coordinates
+        self.multiPolygon = MKMultiPolygon(polygons)
     }
 }
 

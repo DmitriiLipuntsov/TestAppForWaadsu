@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 
     //MARK: - Properties
     var mapView: MKMapView!
+    var widthRouteLabel: UILabel!
     let waadsuAPI = WaadsuAPI()
     
     override func viewDidLoad() {
@@ -23,9 +24,12 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         createMapView()
-        waadsuAPI.getOverlays { overlays in
+        createWidthRouteLabel()
+        
+        waadsuAPI.getOverlays { overlays, locationCoordinates in
             DispatchQueue.main.async {
                 self.mapView.addOverlays(overlays)
+                self.routeDistanceCalculation(locationCoordinates: locationCoordinates)
             }
         }
     }
@@ -47,20 +51,50 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func calculate() {
+    private func createWidthRouteLabel() {
+        widthRouteLabel = UILabel()
+        widthRouteLabel.textColor = .red
+        widthRouteLabel.font = widthRouteLabel.font.withSize(30)
+        widthRouteLabel.text = "000"
+        widthRouteLabel.textAlignment = .left
+        widthRouteLabel.numberOfLines = 0
+        
+        view.addSubview(widthRouteLabel)
+        
+        widthRouteLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            widthRouteLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            widthRouteLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            widthRouteLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            
+        ])
         
     }
+    
+    func routeDistanceCalculation(locationCoordinates: [CLLocationCoordinate2D]) {
+        var allDistance: Double = 0
+        for index in 0...locationCoordinates.count - 2 {
+            
+            let startLocation = MKMapPoint(locationCoordinates[index])
+            let destenationLocation = MKMapPoint(locationCoordinates[index + 1])
+            
+            let distance = startLocation.distance(to: destenationLocation)
+            allDistance += distance
+        }
+        widthRouteLabel.text = "\(allDistance)"
+    }
 }
+
 
 //MARK: - MKMapViewDelegate
 extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
         guard let polygon = overlay as? MKMultiPolygon else { return MKOverlayRenderer() }
         let renderer = MKMultiPolygonRenderer(multiPolygon: polygon)
         renderer.strokeColor = .blue
-        return renderer
         
+        return renderer
     }
 }
