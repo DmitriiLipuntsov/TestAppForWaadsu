@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		77058232269A1B0400323EE2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77058231269A1B0400323EE2 /* Model.swift */; };
+		7705825C269CCE2A00323EE2 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705825B269CCE2A00323EE2 /* Presenter.swift */; };
 		77BBF7DB2698AD0F00D61C23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */; };
 		77BBF7DD2698AD0F00D61C23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */; };
 		77BBF7DF2698AD0F00D61C23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBF7DE2698AD0F00D61C23 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		77058231269A1B0400323EE2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7705825B269CCE2A00323EE2 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		77BBF7D72698AD0F00D61C23 /* TestAppForWaadsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppForWaadsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				77BBF7DA2698AD0F00D61C23 /* AppDelegate.swift */,
 				77BBF7DC2698AD0F00D61C23 /* SceneDelegate.swift */,
 				77BBF7DE2698AD0F00D61C23 /* ViewController.swift */,
+				7705825B269CCE2A00323EE2 /* Presenter.swift */,
 				77BBF7F02698B18300D61C23 /* WaadsuAPI.swift */,
 				77058231269A1B0400323EE2 /* Model.swift */,
 				77BBF7E32698AD1000D61C23 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7705825C269CCE2A00323EE2 /* Presenter.swift in Sources */,
 				77BBF7DF2698AD0F00D61C23 /* ViewController.swift in Sources */,
 				77058232269A1B0400323EE2 /* Model.swift in Sources */,
 				77BBF7F12698B18300D61C23 /* WaadsuAPI.swift in Sources */,

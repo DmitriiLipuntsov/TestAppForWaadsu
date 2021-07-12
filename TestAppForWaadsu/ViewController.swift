@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     //MARK: - Properties
     var mapView: MKMapView!
     var widthRouteLabel: UILabel!
-    let waadsuAPI = WaadsuAPI()
+    
+    var presenter: PresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +24,7 @@ class ViewController: UIViewController {
         createMapView()
         createWidthRouteLabel()
         
-        waadsuAPI.getOverlays { overlays, locationCoordinates in
-            DispatchQueue.main.async {
-                self.mapView.addOverlays(overlays)
-                self.routeDistanceCalculation(locationCoordinates: locationCoordinates)
-            }
-        }
+        presenter.getOverlaysAndCoordinates()
     }
     
     //MARK: - UI creation
@@ -68,21 +64,22 @@ class ViewController: UIViewController {
         ])
         
     }
-    
-    func routeDistanceCalculation(locationCoordinates: [CLLocationCoordinate2D]) {
-        var allDistance: Double = 0
-        for index in 0...locationCoordinates.count - 2 {
-            
-            let startLocation = MKMapPoint(locationCoordinates[index])
-            let destenationLocation = MKMapPoint(locationCoordinates[index + 1])
-            
-            let distance = startLocation.distance(to: destenationLocation)
-            allDistance += distance
-        }
-        widthRouteLabel.text = "\(allDistance)"
-    }
 }
 
+
+//MARK: Presenter delegate
+extension ViewController: ViewProtocol {
+    func success(overlays: [MKOverlay], widthRoute: String) {
+        DispatchQueue.main.async {
+            self.mapView.addOverlays(overlays)
+            self.widthRouteLabel.text = widthRoute
+        }
+    }
+    
+    func failure(error: Error) {
+        print(error) // в этом месте можно обработать ошибку, например вызывать алерт
+    }
+}
 
 //MARK: - MKMapViewDelegate
 extension ViewController: MKMapViewDelegate {
@@ -91,7 +88,7 @@ extension ViewController: MKMapViewDelegate {
         guard let polygon = overlay as? MKMultiPolygon else { return MKOverlayRenderer() }
         let renderer = MKMultiPolygonRenderer(multiPolygon: polygon)
         renderer.strokeColor = .blue
-        
+
         return renderer
     }
 }

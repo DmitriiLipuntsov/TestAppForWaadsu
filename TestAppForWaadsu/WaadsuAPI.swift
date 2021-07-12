@@ -7,9 +7,13 @@
 
 import MapKit
 
-class WaadsuAPI {
+protocol NetworkServiceProtocol {
+    func getOverlays(complition: @escaping (Result<([MKOverlay], [CLLocationCoordinate2D]), Error>) -> ())
+}
+
+struct WaadsuAPI: NetworkServiceProtocol {
     
-    func getOverlays(complition: @escaping ([MKOverlay], [CLLocationCoordinate2D]) -> ()) {
+    func getOverlays(complition: @escaping (Result<([MKOverlay], [CLLocationCoordinate2D]), Error>) -> ()) {
         let urlName = "https://waadsu.com/api/russia.geo.json"
         guard let url = URL(string: urlName) else { return }
         
@@ -19,10 +23,10 @@ class WaadsuAPI {
                 let overlays = [object.multiPolygon]
                 let coordinats = object.coordinates
                 
-                complition(overlays, coordinats)
+                complition(.success((overlays, coordinats)))
             }
             catch {
-                print(error)
+                complition(.failure(error))
             }
         }.resume()
     }

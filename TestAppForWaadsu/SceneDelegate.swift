@@ -11,11 +11,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    /*
+     Здесь сделал инъекцию зависимостей и создал объекты, лучше делать это в отдельном объекте например в Builder.
+     */
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+        
+        let waadsuAPI = WaadsuAPI()
+        let view = ViewController()
+        let presenter = Presenter(view: view, waadsuAPI: waadsuAPI)
+        
+        view.presenter = presenter
+        
+        window.rootViewController = view
         window.makeKeyAndVisible()
         self.window = window
         
